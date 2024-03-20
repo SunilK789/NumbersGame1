@@ -4,12 +4,15 @@ import StartGame from "./screens/StartGame";
 
 export default function App() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.rootContainer}>
       <StartGame />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  rootContainer: {
+    flex: 1,
+    backgroundColor: "#ddb52f",
+  },
 });

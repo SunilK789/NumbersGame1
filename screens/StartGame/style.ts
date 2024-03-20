@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     shadowOpacity: 0.25,
+    alignItems: "center",
   },
   numberInput: {
     height: 50,
@@ -23,6 +24,13 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+    margin: 16,
+  },
+  buttonContainer: {
+    flex: 1,
   },
 });
 
