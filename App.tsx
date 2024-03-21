@@ -10,22 +10,23 @@ import StartGame from "./screens/StartGame";
 import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import GameScreen from "./screens/GameScreen";
+import Colors from "./constants/colors";
 
 export default function App() {
-  const [pickedNumber, setPickedNumber] = useState<Number>();
+  const [pickedNumber, setPickedNumber] = useState<number>();
 
-  const pickedNumberHandler = (number: Number) => {
+  const pickedNumberHandler = (number: number) => {
     console.log("number:", number);
     setPickedNumber(number);
   };
 
   let screen = <StartGame onPickedNumber={pickedNumberHandler} />;
   if (pickedNumber) {
-    screen = <GameScreen />;
+    screen = <GameScreen userNumber={pickedNumber} />;
   }
   return (
     <LinearGradient
-      colors={["#4e0329", "#ddb52f"]}
+      colors={[Colors.primary700, Colors.accent500]}
       style={styles.rootContainer}
     >
       <ImageBackground
@@ -34,7 +35,7 @@ export default function App() {
         resizeMode="cover"
         imageStyle={styles.bgImage}
       >
-        {screen}
+        <SafeAreaView style={styles.rootContainer}>{screen}</SafeAreaView>
       </ImageBackground>
     </LinearGradient>
   );

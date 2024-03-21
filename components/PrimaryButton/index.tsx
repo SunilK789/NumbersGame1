@@ -1,6 +1,7 @@
 import { View, Text, Pressable } from "react-native";
 import React from "react";
 import { styles } from "./style";
+import Colors from "../../constants/colors";
 
 interface IPrimaryButtonProps {
   children: any;
@@ -24,7 +25,7 @@ const PrimaryButton: React.FC<IPrimaryButtonProps> = ({
             : styles.buttonInnerContainer
         }
         onPress={hanldePress}
-        android_ripple={{ color: "blue" }}
+        android_ripple={{ color: Colors.primary600 }}
       >
         <Text style={styles.buttonText}>{children}</Text>
       </Pressable>
