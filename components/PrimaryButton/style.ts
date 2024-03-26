@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     elevation: 2,
+    backgroundColor: Colors.primary500
   },
   buttonText: {
     color: "white",

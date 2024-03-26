@@ -5,7 +5,7 @@ import Colors from "../../constants/colors";
 
 interface IPrimaryButtonProps {
   children: any;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 const PrimaryButton: React.FC<IPrimaryButtonProps> = ({
