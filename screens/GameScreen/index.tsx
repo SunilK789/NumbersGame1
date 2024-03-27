@@ -1,10 +1,9 @@
-import { Alert, FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Alert, FlatList, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { styles } from "./style";
 import Title from "../../components/Title";
 import { generateRandomBetween } from "../../utils/number";
 import NumberContainer from "../../components/Game/NumberContainer";
-import PrimaryButton from "../../components/PrimaryButton";
 import { Direction } from "../../constants/constants";
 import Card from "../../components/Card";
 
@@ -71,6 +70,7 @@ const GameScreen: React.FC<IGameScreenProps> = ({ userNumber, onGameOver }) => {
         renderItem={({ item }) => (
           <Text style={styles.gussedNumber}>{item}</Text>
         )}
+        keyExtractor={(item) => item.toString()}
       />
     </View>
   );
