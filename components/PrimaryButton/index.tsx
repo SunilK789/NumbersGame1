@@ -6,18 +6,20 @@ import Colors from "../../constants/colors";
 interface IPrimaryButtonProps {
   children: any;
   onPress?: () => void;
+  style?: any
 }
 
 const PrimaryButton: React.FC<IPrimaryButtonProps> = ({
   children,
   onPress,
+  style
 }) => {
   const hanldePress = () => {
     onPress();
   };
 
   return (
-    <View style={styles.buttonOuterContainer}>
+    <View style={[styles.buttonOuterContainer, style]}>
       <Pressable
         style={({ pressed }) =>
           pressed

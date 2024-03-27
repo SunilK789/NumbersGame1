@@ -27,6 +27,11 @@ export default function App() {
     setGameIsOver(true);
   };
 
+  const onNewGameHandler = () => {
+    setGameIsOver(false);
+    setPickedNumber(0);
+  }
+
   let screen = <StartGame onPickedNumber={pickedNumberHandler} />;
   if (pickedNumber) {
     screen = (
@@ -36,7 +41,7 @@ export default function App() {
 
   if (gameIsOver) {
     console.log("redirect to Game Over===>")
-    screen = <GameOver />;
+    screen = <GameOver newGameHandler={onNewGameHandler} />;
   }
 
   return (
@@ -59,6 +64,7 @@ export default function App() {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
+    marginTop: 50
   },
   bgImage: {
     opacity: 0.15,

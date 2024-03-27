@@ -1,4 +1,4 @@
-import { Alert, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Alert, FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { styles } from "./style";
 import Title from "../../components/Title";
@@ -6,6 +6,7 @@ import { generateRandomBetween } from "../../utils/number";
 import NumberContainer from "../../components/Game/NumberContainer";
 import PrimaryButton from "../../components/PrimaryButton";
 import { Direction } from "../../constants/constants";
+import Card from "../../components/Card";
 
 interface IGameScreenProps {
   userNumber: number;
@@ -19,6 +20,7 @@ const GameScreen: React.FC<IGameScreenProps> = ({ userNumber, onGameOver }) => {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
 
   const [currentGuess, setCurrentGuess] = useState<number>(initialGuess);
+  const [guessNumbes, setGuessNumbers] = useState<number[]>([initialGuess]);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -54,25 +56,22 @@ const GameScreen: React.FC<IGameScreenProps> = ({ userNumber, onGameOver }) => {
     );
 
     setCurrentGuess(newRndNumber);
+    setGuessNumbers((guessNumbes) => [newRndNumber, ...guessNumbes]);
   };
 
   return (
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Higher or lower?</Text>
-        <View>
-          <PrimaryButton
-            onPress={nextGuesHandler.bind(this, Direction.greater)}
-          >
-            +
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuesHandler.bind(this, Direction.lower)}>
-            -
-          </PrimaryButton>
-        </View>
-      </View>
+      <Card nextGuesHandler={nextGuesHandler} />
+
+      {/* {guessNumbes.map(number => <Text style={styles.gussedNumber}>{number}</Text>)} */}
+      <FlatList
+        data={guessNumbes}
+        renderItem={({ item }) => (
+          <Text style={styles.gussedNumber}>{item}</Text>
+        )}
+      />
     </View>
   );
 };
