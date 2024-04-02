@@ -48,19 +48,22 @@ export default function App() {
   }
   const marginTopDistance = height < 380 ? 0 : 50;
   return (
-    <LinearGradient
-      colors={[Colors.primary700, Colors.accent500]}
-      style={[styles.rootContainer, { marginTop: marginTopDistance }]}
-    >
-      <ImageBackground
-        source={require("./assets/images/background.jpg")}
-        style={styles.rootContainer}
-        resizeMode="cover"
-        imageStyle={styles.bgImage}
+    <>
+      <StatusBar style="dark" />
+      <LinearGradient
+        colors={[Colors.primary700, Colors.accent500]}
+        style={[styles.rootContainer, { marginTop: marginTopDistance }]}
       >
-        <SafeAreaView style={styles.rootContainer}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          source={require("./assets/images/background.jpg")}
+          style={styles.rootContainer}
+          resizeMode="cover"
+          imageStyle={styles.bgImage}
+        >
+          <SafeAreaView style={styles.rootContainer}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 
