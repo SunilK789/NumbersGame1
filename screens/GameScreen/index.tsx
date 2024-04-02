@@ -57,12 +57,13 @@ const GameScreen: React.FC<IGameScreenProps> = ({ userNumber, onGameOver }) => {
     setCurrentGuess(newRndNumber);
     setGuessNumbers((guessNumbes) => [newRndNumber, ...guessNumbes]);
   };
+  
 
   return (
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
-      <NumberContainer>{currentGuess}</NumberContainer>
-      <Card nextGuesHandler={nextGuesHandler} />
+      
+      <Card nextGuesHandler={nextGuesHandler} currentGuess={currentGuess} />
 
       {/* {guessNumbes.map(number => <Text style={styles.gussedNumber}>{number}</Text>)} */}
       <FlatList

@@ -1,7 +1,12 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 
+const deveiceWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   inputContainer: {
     // marginTop: 50,
     padding: 16,
